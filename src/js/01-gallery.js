@@ -25,24 +25,12 @@ function createGalleryCardsMarkup(galleryItems) {
     .join('');
 }
 
-// const lightbox = new SimpleLightbox('.gallery a', {
-//   captionsData: 'alt',
-//   captionDelay: '250ms',
-// });
-
-let gallery = new SimpleLightbox('.gallery a');
-gallery.on('show.simplelightbox', {
-  // do something…
+const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: '250ms',
 });
 
-// gallery.on('error.simplelightbox', function (e) {
-//   console.log(e); // some usefull information
-// });
-
-// add loading = 'lazy';
-
+// add loading = 'lazy'
 const lazyImgs = document.querySelectorAll('.gallery__image');
 lazyImgs.forEach(img => {
   img.loading = 'lazy';
