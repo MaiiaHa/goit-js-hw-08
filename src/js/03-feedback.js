@@ -36,9 +36,6 @@ const textareaRef = document.querySelector('textarea'); // textarea tag
 formRef.addEventListener('input', throttle(onDataAdded, 500));
 formRef.addEventListener('submit', onFormSubmit);
 
-// inputRef.addEventListener('input', onInputAdded);
-// textareaRef.addEventListener('input', onTextAdded);
-
 function onDataAdded(e) {
   e.preventDefault();
   // const data = e.target.value;
@@ -47,31 +44,18 @@ function onDataAdded(e) {
     'feedback-form-state',
     JSON.stringify({ email: inputRef.value, message: textareaRef.value })
   );
-  const data = JSON.parse(localStorage.getItem('feedback-form-state'));
-  console.log(data); // object in console according to the task
-
-  // console.log(localStorage.getItem('feedback-form-state'));
 }
-if (localStorage) {
-  console.log(inputRef.value);
+
+const data = JSON.parse(localStorage.getItem('feedback-form-state'));
+
+if (data) {
   inputRef.value = data.email;
   textareaRef.value = data.message;
+  console.log(data); // object in console according to the task
 } else {
   inputRef.value = '';
   textareaRef.value = '';
 }
-// function onInputAdded() {
-//   if (inputRef.value) {
-//     return (inputRef.value = data.email);
-//   }
-//   inputRef.value = '';
-// }
-// function onTextAdded() {
-//   if (textareaRef.value) {
-//     return (textareaRef.value = data.message);
-//   }
-//   textareaRef.value = '';
-// }
 
 function onFormSubmit(e) {
   e.preventDefault();
