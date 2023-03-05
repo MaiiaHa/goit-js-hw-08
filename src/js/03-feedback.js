@@ -51,7 +51,7 @@ const data = JSON.parse(localStorage.getItem('feedback-form-state'));
 if (data) {
   inputRef.value = data.email;
   textareaRef.value = data.message;
-  console.log(data); // object in console according to the task
+  // console.log(data); // object in console according to the task
 } else {
   inputRef.value = '';
   textareaRef.value = '';
@@ -59,6 +59,8 @@ if (data) {
 
 function onFormSubmit(e) {
   e.preventDefault();
+
+  console.log({ email: inputRef.value, message: textareaRef.value }); // object in console according to the task
 
   e.target.reset(); // очищає значення форми при публікації
   localStorage.clear('feedback-form-state'); // очищає localStorage

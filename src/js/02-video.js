@@ -23,22 +23,26 @@ let currentTime = localStorage.getItem('videoplayer-current-time');
 
 //https://github.com/vimeo/player.js/#setcurrenttimeseconds-number-promisenumber-rangeerrorerror
 
-player
-  .setCurrentTime(currentTime)
-  .then(function (seconds) {
-    // seconds = the actual time that the player seeked to
-    seconds = currentTime;
-  })
-  .catch(function (error) {
-    switch (error.name) {
-      case 'RangeError':
-        // the time was less than 0 or greater than the video’s duration
-        currentTime = 0;
-        break;
+player.setCurrentTime(currentTime || 0);
 
-      default:
-        // some other error occurred
-        currentTime = 0;
-        break;
-    }
-  });
+// it can be also like this
+
+//player
+//   .setCurrentTime(currentTime)
+//   .then(function (seconds) {
+//     // seconds = the actual time that the player seeked to
+//     seconds = currentTime;
+//   })
+//   .catch(function (error) {
+//     switch (error.name) {
+//       case 'RangeError':
+//         // the time was less than 0 or greater than the video’s duration
+//         currentTime = 0;
+//         break;
+
+//       default:
+//         // some other error occurred
+//         currentTime = 0;
+//         break;
+//     }
+//   });
